@@ -52,7 +52,7 @@ namespace BPMobile.ViewModels.Auth
 
                 _keycloakService.SetUserInfo("{" + response.Claims.FirstOrDefault(c => c.Type.ToString() == "realm_access").ToString() + "," + response.Claims.FirstOrDefault(c => c.Type.ToString() == "resource_access") + "}", loginResult.IdentityToken);
 
-                if (_keycloakService.Authorize("ReadSubjects1.*"))
+                if (_keycloakService.Authorize("ReadSubjects.*"))
                     await Shell.Current.GoToAsync($"//{nameof(MainPage)}", true);
                 else
                     await Shell.Current.GoToAsync($"//{nameof(AccessDeniedPage)}", true);
